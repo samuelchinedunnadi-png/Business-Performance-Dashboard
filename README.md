@@ -82,7 +82,7 @@ Raw data from Excel and CSV files were imported into MySQL tables with primary a
 
 
 
-## Exploratory Data Analysis (EDA) 
+## Exploratory Data Analysis (EDA) “For a comprehensive view of the detailed analysis, the full file will be included in the repository.”
 
 Every dataset tells a story, and this project’s data provided a comprehensive view of client engagement, departmental performance, and revenue dynamics across regions. Before diving into predictive modeling, an extensive exploratory analysis was conducted to understand patterns, trends, inefficiencies, and opportunities for strategic growth. The dataset contained 10,452 records across 12 variables, including client IDs, departments, service dates, revenue, and operational metrics such as hours worked. Initial cleaning removed ~3% missing values and ~1.5% duplicates, ensuring reliability and completeness for analysis.
 
