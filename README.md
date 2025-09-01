@@ -19,7 +19,7 @@
   - [Comparative Departmental Insights](#comparative-departmental-insights)  
   - [Executive Takeaways](#executive-takeaways)  
 - [Data Analysis](#data-analysis)  
- - [Results](#results)
+ - [Result](#result)
 - [Recommendation](#recommendation)
 - [Limitations](#limitations)
 
@@ -44,7 +44,13 @@ Executive insights indicate that Audit serves as the trust anchor but remains un
 4.	Predictive Model: 95–98% accuracy, consistently validating revenue trends and demand patterns.
 
 
-## Data Source
+## Data Source 
+
+- **Excel/CSV**: Raw departmental & client data.  
+- **MySQL**: Data cleaning, structuring, and querying.  
+- **Python**: Advanced preprocessing, correlation analysis, predictive modeling.  
+- **Power BI**: Dashboards, storytelling & interactive insights.  
+
 
 The dataset for this project was sourced from internal organizational client and departmental records, provided in Excel (CSV/XLSX) format. Data was imported into MySQL for cleaning, structuring, and querying. Python was used for advanced preprocessing, anomaly detection, and predictive modeling. Finally, cleaned datasets were connected to Power BI to build interactive dashboards and generate insights. All sensitive client information was anonymized, while maintaining the dataset’s structure to preserve analytical integrity.
 
@@ -54,25 +60,26 @@ The dataset for this project was sourced from internal organizational client and
 The primary dataset used for this analysis is the C:\Users\ADMIN\Downloads\Service data.csv file and C:\Users\ADMIN\OneDrive\Desktop\Branch data.csv containing detailed information about each revenue generted from each Region and department. the Csv files will be will be uploaded in the repository
 
 
-## Tools 
+##  Tools 
 
 The project employed Excel, MySQL, Python, and Power BI to transform raw client and departmental data into actionable insights.
 
-- Excel served as the initial platform for data entry and preliminary cleaning, including removal of blanks and duplicates, correction of column headers, and ensuring consistent formatting. Cleaned sheets were exported to MySQL for further structuring.
+- **Excel** → Excel served as the initial platform for data entry and preliminary cleaning, including removal of blanks and duplicates, correction of column headers, and ensuring consistent formatting. Cleaned sheets were exported to MySQL for further structuring.
 
-- MySQL acted as the central repository, storing all datasets while handling missing values, duplicates, and outliers. It standardized formats, created derived fields such as Hourly Rate, Quarter, and Year, and built relationships between tables, producing clean, queryable data ready for analysis.
+- **MySQL** → MySQL acted as the central repository, storing all datasets while handling missing values, duplicates, and outliers. It standardized formats, created derived fields such as Hourly Rate, Quarter, and Year, and built relationships between tables, producing clean, queryable data ready for analysis.
 
-- Python enabled advanced exploratory data analysis, correlation checks, and predictive modeling using NumPy, Pandas, and scikit-learn. Revenue trends were forecasted, achieving 95–98% alignment between predictions and actuals. Outputs were exported back to Excel or CSV for Power BI visualization.
+- **Python (Pandas, NumPy, Scikit-learn)** → Python enabled advanced exploratory data analysis, correlation checks, and predictive modeling using NumPy, Pandas, and scikit-learn. Revenue trends were forecasted, achieving 95–98% alignment between predictions and actuals. Outputs were exported back to Excel or CSV for Power BI visualization.
 
-- Power BI provided the visualization and storytelling layer, connecting to MySQL and Excel outputs to create executive dashboards. These dashboards allowed interactive drill-downs by region, department, quarter, and client, highlighting revenue performance, client engagement, departmental efficiency, and operational outliers.
+- **Power BI** → Power BI provided the visualization and storytelling layer, connecting to MySQL and Excel outputs to create executive dashboards. These dashboards allowed interactive drill-downs by region, department, quarter, and client, highlighting revenue performance, client engagement, departmental efficiency, and operational outliers.
 
+📌 **Workflow:** 
 - The end-to-end workflow followed this sequence: Excel (Raw Data) → MySQL (Cleaning & Structuring) → Python (Modeling & Advanced Analytics) → Power BI (Visualization & Insights).
 
 
-
-## Data Cleaning & Preparation
+##  Data Cleaning & Preparation  
 
 Raw data from Excel and CSV files were imported into MySQL tables with primary and foreign keys defined for Clients, Departments, Revenue, and Hours tables. Column names were standardized for consistency. Missing revenue and hours data were replaced with zero, while missing client IDs and department names were flagged for review. Duplicate records were removed, retaining only the most recent entry. Dates were standardized to YYYY-MM-DD, numeric fields stored as decimals, and currency symbols removed. Outliers, such as unusually high hours, were flagged rather than deleted. Derived columns like Hourly Rate, Retention Marker, Quarter, and Year were created for trend analysis. Data integrity was verified across tables, and cleaned datasets were exported to Power BI and Python for visualisation and analysis respectively
+
 
 
 ## Exploratory Data Analysis (EDA) 
@@ -83,52 +90,50 @@ Every dataset tells a story, and this project’s data provided a comprehensive 
 **Regional Analysis**
 
 Overview
-
 Revenue was analyzed across four key regions: Europe, Americas, APAC, and EMEA.
-
 The aim was to uncover trends, seasonal variations, anomalies, and alignment with predictive models.
-
 Metrics considered: Revenue, client engagement, departmental contributions, and predictive model accuracy.
 
-Regional Revenue Distribution
+**Regional Revenue Distribution**
 
-Europe: ₦46.3M (23.7% of total revenue) — experienced volatility and late-year declines (-27.3% YoY). Strong Audit and Management contribution, but low client retention in some months.
+✔ Europe: ₦46.3M (23.7% of total revenue) — experienced volatility and late-year declines (-27.3% YoY). Strong Audit and Management contribution, but low client retention in some months.
 
-Americas: ₦48.8M (25% of total revenue) — steady but declining (-12.1% YoY). Revenue aligned closely with predictions, but month-to-month anomalies indicated short-term market shocks.
+✔ Americas: ₦48.8M (25% of total revenue) — steady but declining (-12.1% YoY). Revenue aligned closely with predictions, but month-to-month anomalies indicated short-term market shocks.
 
-APAC: ₦48.7M (24.9% of total revenue) — highest growth region (+21.5% YoY), highly aligned with predictive models. Departments like Management and Legal scaled effectively here.
+✔ APAC: ₦48.7M (24.9% of total revenue) — highest growth region (+21.5% YoY), highly aligned with predictive models. Departments like Management and Legal scaled effectively here.
 
-EMEA: ₦24.1M (12.3% of total revenue) — strong growth potential (+33.5% YoY) but high volatility. Outlier spikes highlighted inconsistent client engagement.
+✔ EMEA: ₦24.1M (12.3% of total revenue) — strong growth potential (+33.5% YoY) but high volatility. Outlier spikes highlighted inconsistent client engagement.
 
-Quarterly Regional Trends
+**Quarterly Regional Trends**
 
-Q1: All regions started cautiously, with Americas showing early volatility. APAC and EMEA had slow but steady revenue growth.
+📅 Q1: All regions started cautiously, with Americas showing early volatility. APAC and EMEA had slow but steady revenue growth.
 
-Q2: Revenue surged in APAC (+40.6% MoM) and EMEA (+53.7% MoM), highlighting mid-year peak engagement. Europe and Americas showed moderate recovery.
+📅 Q2: Revenue surged in APAC (+40.6% MoM) and EMEA (+53.7% MoM), highlighting mid-year peak engagement. Europe and Americas showed moderate recovery.
 
-Q3: APAC and EMEA sustained growth; Europe declined steadily, revealing structural market challenges. Americas plateaued after early-year fluctuations.
+📅 Q3: APAC and EMEA sustained growth; Europe declined steadily, revealing structural market challenges. Americas plateaued after early-year fluctuations.
 
-Q4: APAC and Americas stabilized near forecasted revenue; Europe and EMEA showed increased volatility and underdelivery relative to potential.
+📅 Q4: APAC and Americas stabilized near forecasted revenue; Europe and EMEA showed increased volatility and underdelivery relative to potential.
 
-Departmental Contribution by Region
+**Departmental Contribution by Region**
 
-Europe: Audit and Legal drove revenue, while Tax remained underutilized.
+🌍 Europe: Audit and Legal drove revenue, while Tax remained underutilized.
 
-Americas: Management and Advisory contributed the most; Advisory showed inconsistencies in client engagement.
+🌍 Americas: Management and Advisory contributed the most; Advisory showed inconsistencies in client engagement.
 
-APAC: Balanced contribution across Audit, Management, and Legal, confirming predictive model reliability.
+🌍 APAC: Balanced contribution across Audit, Management, and Legal, confirming predictive model reliability.
 
-EMEA: Growth concentrated in Audit and Management; Advisory underperformed relative to model expectations.
+🌍 EMEA: Growth concentrated in Audit and Management; Advisory underperformed relative to model expectations.
 
-Insights & Strategic Takeaways
+
+**Insights & Strategic Takeaways**
 
 Predictable Growth Engines: APAC and Americas — high alignment with predictive models; potential to scale further.
 
-Regions Needing Strategic Intervention: Europe and EMEA — structural challenges and volatile revenue streams require client engagement optimization and operational refinement.
+💡🎯 Regions Needing Strategic Intervention: Europe and EMEA — structural challenges and volatile revenue streams require client engagement optimization and operational refinement.
 
-Department–Region Focus: Tax underperformance is consistent across all regions, representing an opportunity for repositioning. Audit dominance is strongest in Europe and EMEA, but modeling unpredictability needs addressing.
+💡🎯 Department–Region Focus: Tax underperformance is consistent across all regions, representing an opportunity for repositioning. Audit dominance is strongest in Europe and EMEA, but modeling unpredictability needs addressing.
 
-Seasonality Patterns: Mid-year (Q2–Q3) is the peak period across all regions, a key window for targeted client engagement and marketing campaigns.
+💡🎯 Seasonality Patterns: Mid-year (Q2–Q3) is the peak period across all regions, a key window for targeted client engagement and marketing campaigns.
 
 
 
@@ -136,19 +141,20 @@ Seasonality Patterns: Mid-year (Q2–Q3) is the peak period across all regions, 
 
 A total of 48,000 client engagements generated ₦195.32M in revenue, with a cumulative 43 million hourly rate and 217,000 total hours worked. These metrics form the foundation for understanding how departmental operations translate into value creation. Across all regions, **five core departments—Audit, Management, Advisory, Tax, and Legal—**constituted the pillars of service delivery, each exhibiting unique performance characteristics.
 
-Audit: Generated ₦39.22M revenue with 44K hours, averaging ₦896 per hour. Audit dominated client attention, highlighting its role as the cornerstone of compliance and trust.
+📊Audit: Generated ₦39.22M revenue with 44K hours, averaging ₦896 per hour. Audit dominated client attention, highlighting its role as the cornerstone of compliance and trust.
 
-Management: Earned ₦39.22M with 43K hours, at ₦905 per hour, representing a stable, predictable growth engine.
+💼Management: Earned ₦39.22M with 43K hours, at ₦905 per hour, representing a stable, predictable growth engine.
 
-Advisory: Produced ₦39.02M over 43K hours (₦908/hour), yet underperformed relative to predictive expectations.
+💼Advisory: Produced ₦39.02M over 43K hours (₦908/hour), yet underperformed relative to predictive expectations.
 
-Tax: Accounted for ₦38.9M with 43K hours, ₦905/hour. Despite its societal importance, Tax remained underutilized, signaling untapped growth potential.
+🧾Tax: Accounted for ₦38.9M with 43K hours, ₦905/hour. Despite its societal importance, Tax remained underutilized, signaling untapped growth potential.
 
-Legal: Delivered ₦38.8M across 44K hours (₦891/hour), maintaining consistency but with volatility in client uptake.
+⚖️Legal: Delivered ₦38.8M across 44K hours (₦891/hour), maintaining consistency but with volatility in client uptake.
 
 The initial observation: while surface-level revenue appears balanced, client engagement is heavily skewed toward Audit, and Tax services lag far behind, representing both a strategic gap and a societal opportunity.
 
-- **Correlation Analysis** – What Drives Revenue
+
+📈- **Correlation Analysis** – What Drives Revenue
 
 Understanding the drivers of revenue requires more than surface-level totals. A correlation matrix revealed the following insights:
 
@@ -162,15 +168,17 @@ Legal: High predictive alignment (predicted revenue r=0.93; hours r=0.65; hourly
 
 The takeaway: Audit attracts attention but defies predictability, while Management, Advisory, and Legal are revenue engines where forecasting models excel.
 
+
+
 - **Client Retention** – The Loyalty Curve
 
 Client retention analysis highlighted the critical early months of engagement:
-
 January–March: Retention rates were volatile (0.31–0.38), indicating that first-quarter engagement requires focus.
-
 April onward: Retention stabilized above 0.90, ultimately reaching 0.98–1.00, showing near-perfect loyalty for committed clients.
 
 The insight: while onboarding is fragile, long-term loyalty is achievable once clients progress beyond initial engagements. Strategic focus on first-quarter retention could magnify revenue and client lifetime value.
+
+
 
 - **Revenue by Hourly Rate** – Price as a Growth Lever
 
@@ -182,56 +190,45 @@ Management, Advisory, Tax, and Legal displayed similar stair-step growth pattern
 
 This validated pricing as a lever for strategic revenue growth while maintaining client trust.
 
-- **Operational Insight and Outlier Detection**
 
+- **Operational Insight and Outlier Detection**
+  
 Time invested in operations revealed two contrasting worlds:
 
 Normal Operations: Average 4.51 hours with SD=2.31, highly predictable and efficient.
-
 Outliers: Averaged 21.25 hours with SD=6.34, demanding nearly five times more effort for marginal revenue.
 
 Revenue contribution highlighted the disparity:
-
 Normal group: Predicted ₦195.44M vs. actual ₦195M, with a negligible error of 0.52%, accounting for ≈99.96% of total revenue.
 
 Outliers: Predicted ₦75.29K vs. actual ₦68K, negligible in financial terms but resource-intensive.
 
 Key insight: the predictive model is reliable; operational inefficiency in outlier cases is the primary challenge. Addressing these outliers through process optimization will sharpen resource allocation and efficiency.
 
-- **Revenue Performance and Trend**
 
+- **Revenue Performance and Trend**
+  
 The firm set an ambitious ₦200M annual revenue target. Actual revenue reached ₦195.32M (97.5%), with a predictive forecast of ₦195.52M (<0.5% variance), demonstrating near-perfect model alignment.
 
-Regional Insights
-
+**Regional Insights**
 Europe: Declined -27.3%, underperforming structurally despite accurate forecasts.
-
 Americas: Stable at ₦48.76M; forecasts closely matched reality.
-
 APAC: Strong growth (+21.45%), model accuracy near-perfect.
-
 EMEA: Growth +33.54% but high volatility; predictive model still reliable.
 
-Departmental & Quarterly Trends
-
+**Departmental & Quarterly Trends**
 First Quarter: Volatile start; revenue down -12.98%, with spikes and troughs.
-
 Second Quarter: Recovery and growth (+13.50%), driven by Audit and Management.
-
 Third Quarter: Peak client engagement (+13.2%), momentum slows but revenue strong.
-
 Fourth Quarter: Plateau (+1.05%), signaling fatigue and demand softening.
 
 Executive insight: Q2–Q3 are critical windows for growth; strategic focus here can drive exponential revenue gains.
 
+
 - **Comparative Departmental Insights**
-
 Growth Leaders: Management (+16%) and Tax (+5.28%) show resilience.
-
 Decliners: Advisory (-26.53%) and Legal (-11.53%) exhibit weak demand and client retention issues.
-
 Audit: Revenue volatile (-9.23%), requires predictive refinement.
-
 Predictive models remained reliable across all departments, indicating execution and market demand—not forecasting—drive variability.
 
 - **Executive Takeaways**
@@ -248,38 +245,61 @@ Predictive models remained reliable across all departments, indicating execution
 
 In sum, the EDA revealed strengths, vulnerabilities, and strategic opportunities, providing actionable insights for client engagement, departmental prioritization, operational efficiency, and revenue forecasting. The narrative reinforces that data, when paired with predictive modeling, becomes a compass for decision-making, growth strategy, and sustainable operational excellence.
 
+## 🔎 (EDA) Summary  
+
+📌 Dataset size: **10,452 records, 12 variables**.  
+📌 Removed ~3% missing & ~1.5% duplicates.  
+
+### 🌍 Regional Analysis  
+- **Europe**: ₦46.3M (23.7%) → **-27.3% decline**.  
+- **Americas**: ₦48.8M (25%) → **-12.1% decline**.  
+- **APAC**: ₦48.7M (24.9%) → **+21.5% growth**.  
+- **EMEA**: ₦24.1M (12.3%) → **+33.5% growth** but volatile.  
+
+> **Insight:** APAC & EMEA = growth engines. Europe & Americas need strategy.  
+
+### 👥 Client & Departmental Overview  
+| Department | Revenue (₦M) | Hours (K) | Rate (₦/hr) | Notes |
+|------------|--------------|-----------|-------------|-------|
+| Audit      | 39.22        | 44        | 896         | High demand, unpredictable |
+| Management | 39.22        | 43        | 905         | Stable growth |
+| Advisory   | 39.02        | 43        | 908         | Below predictions |
+| Tax        | 38.9         | 43        | 905         | Underutilized |
+| Legal      | 38.8         | 44        | 891         | Volatile uptake |  
 
 
 ## Data Analysis
 
-The project analyzed 48,000 client engagements, ₦195.32M in revenue, 217,000 hours worked, across five departments and multiple regions. Analysis tools included Excel, MySQL, Python, and Power BI, creating a workflow from raw data cleaning to predictive modeling and dashboard visualization.
+**python Analysis**
 
- #### Correlation Heatmap
-
-This Python script calculates correlation across all numerical variables and visualizes it with a heatmap. It helps identify relationships (positive or negative) between revenue, hours, and hourly rate.
-
-**Correlation**
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
  Clean nulls
+
 dataset = dataset.dropna()
 
- **Correlation matrix**
+ Correlation matrix
+
 correlation = dataset.corr()
 
- **Plot heatmap**
+ Plot heatmap
+
 plt.figure(figsize=(6,4))
 sns.heatmap(correlation, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Heatmap")
 plt.tight_layout()
 plt.show()
 
-#### Hourly rate bin
-hourly_rate_bin = 
-VAR Rate = serv_data[hourly_rate]
+**Dax Measures**
+
+**hourly_rate_bin**
+
+= VAR Rate = serv_data[hourly_rate]
+
 RETURN
+
 SWITCH(
     TRUE(),
     Rate >= 0     && Rate <= 200,   "₦0 – ₦200",
@@ -291,188 +311,180 @@ SWITCH(
     Rate > 1500   && Rate <= 2000,  "₦1501 – ₦2000",
     Rate > 2000,  "₦2001+",
     "Other"
+)
 
-#### Predicted Revenue (Regression Model in DAX)
-  
-    **Predicted_Revenue = -4078.6 + 902.19 * serv_data[hours] + 4.52 * serv_data[hourly_rate]**
+**Predicted_Revenue**
 
-    #### Percentage Error (Prediction Accuracy)
-   
-   PercentageError = AVERAGEX(
+= -4078.6 
++ 902.19 * serv_data[hours] 
++ 4.52   * serv_data[hourly_rate]
+
+PercentageError
+
+= AVERAGEX(
     serv_data,
     DIVIDE(
         ABS(serv_data[total_revenue] - serv_data[predicted_revenue]),
         serv_data[total_revenue]
     )
+)
+
+PercentageError
+
+= AVERAGEX(
+    serv_data,
+    DIVIDE(
+        ABS(serv_data[total_revenue] - serv_data[predicted_revenue]),
+        serv_data[total_revenue]
+    )
+)
 
 
-#### Month-on-Month Revenue % Increase
-   
-    month on month revenue % increase = 
-VAR CurrentMonthRevenue=Sum('serv_data'[total_revenue])
-VAR PreviousMonthRevenue=CALCULATE(
-    SUM('serv_data'[total_revenue]),
-    DATEADD('serv_data'[service_date], -1, MONTH)
-)
-VAR RevenueChange=IF(
-    PreviousMonthRevenue =0,
-    BLANK(),
-    (CurrentMonthRevenue / PreviousMonthRevenue) -1
-)
+**month_on_month_revenue_%_increase** 
+
+= VAR CurrentMonthRevenue =
+    SUM(serv_data[total_revenue])
+VAR PreviousMonthRevenue =
+    CALCULATE(
+        SUM(serv_data[total_revenue]),
+        DATEADD(serv_data[service_date], -1, MONTH)
+    )
+
+**VAR RevenueChange**
+
+=    IF(
+        PreviousMonthRevenue = 0,
+        BLANK(),
+        (CurrentMonthRevenue / PreviousMonthRevenue) - 1
+    )
 RETURN
 RevenueChange * 100
 
 
-#### Revenue Error (Model vs Actual Gap)
+**IsOutlier** 
 
-RevenueError = 
-SUM(serv_data[total_revenue]) - SUM(serv_data[predicted_revenue])
-
-
-#### Clients per Hourly Rate Bin
-
-TotalClientsPerBin = 
-CALCULATE(
-    COUNT(serv_data[client_name]),
-    ALLEXCEPT(serv_data, serv_data[hourly_rate_bin])
-)
-
-
-
-#### Revenue per Hour
-
-Total Rev per hour = DIVIDE (
-    SUM ( serv_data[total_revenue] ),
-    SUM ( serv_data[Hours] ),
-    0
-)
-
-
-#### Outlier Detection (Revenue)
-
-IsOutlier = 
-VAR Q1 = PERCENTILEX.INC(ALL(serv_data), serv_data[total_revenue], 0.25)
+= VAR Q1 = PERCENTILEX.INC(ALL(serv_data), serv_data[total_revenue], 0.25)
 VAR Q3 = PERCENTILEX.INC(ALL(serv_data), serv_data[total_revenue], 0.75)
 VAR IQR = Q3 - Q1
 VAR LowerBound = Q1 - 1.5 * IQR
 VAR UpperBound = Q3 + 1.5 * IQR
-VAR Revenue = MAX(serv_data[total_revenue])  -- ✅ this line is the key fix
+VAR Revenue = MAX(serv_data[total_revenue])
 RETURN
 IF(Revenue < LowerBound || Revenue > UpperBound, "Outlier", "Normal")
 
 
-#### Create Database and Select Active Database
+## Mysql codes
 
 CREATE DATABASE service_data;
 USE service_data;
 
-#### Total Revenue by Region
-
 SELECT b.Region, SUM(s.total_revenue) AS TotalRevenue
+
 FROM serv_data s
 JOIN branch_data b ON s.branch_id = b.Branch_ID
 GROUP BY b.Region
 ORDER BY TotalRevenue DESC;
 
-#### Total Revenue by Department
 SELECT department, SUM(total_revenue) AS TotalRevenue
 FROM serv_data
 GROUP BY department
 ORDER BY TotalRevenue DESC;
 
-
-#### Total Revenue by Client
-
 SELECT client_name, SUM(total_revenue) AS TotalRevenue
 FROM serv_data
 GROUP BY client_name
-ORDER BY TotalRevenue DESC;
-
-
-#### Overall Total Revenue
+ORDER BY TotalRevenue DESC
 
 SELECT SUM(total_revenue) AS TotalRevenue
 FROM serv_data;
 
-
-#### Overall Total Hours
-
 SELECT SUM(hours) AS TotalHours
 FROM serv_data;
-
-
-#### Departmental Revenue Contribution (Percentage)
 
 SELECT 
     department, 
     SUM(total_revenue) AS DepartmentRevenue,
     (SUM(total_revenue) / (SELECT SUM(total_revenue) FROM serv_data)) * 100 AS RevenuePercentage
-FROM serv_data
-GROUP BY department;
+FROM 
+    serv_data
+GROUP BY 
+    department;
 
-
-
-#### Monthly Revenue Trend with Percentage Growth (SQL Server Syntax)
 
 WITH MonthlyRevenue AS (
     SELECT 
         FORMAT(service_date, 'yyyy-MM') AS Month,
         SUM(total_revenue) AS Revenue
-    FROM serv_data
-    GROUP BY FORMAT(service_date, 'yyyy-MM')
+    FROM 
+        serv_data
+    GROUP BY 
+        FORMAT(service_date, 'yyyy-MM')
 ),
 RevenueComparison AS (
     SELECT 
         Month,
         Revenue,
         LAG(Revenue) OVER (ORDER BY Month) AS PreviousMonthRevenue
-    FROM MonthlyRevenue
+    FROM 
+        MonthlyRevenue
 )
 SELECT 
     Month,
     Revenue,
     PreviousMonthRevenue,
-    CASE 
-        WHEN PreviousMonthRevenue > 0 
-        THEN ((Revenue - PreviousMonthRevenue) / PreviousMonthRevenue) * 100 
-        ELSE NULL 
-    END AS RevenuePercentageIncrease
-FROM RevenueComparison
-WHERE PreviousMonthRevenue IS NOT NULL;
+    CASE WHEN PreviousMonthRevenue > 0 THEN ((Revenue - PreviousMonthRevenue) / PreviousMonthRevenue) * 100 ELSE NULL END AS RevenuePercentageIncrease
+FROM 
+    RevenueComparison
+WHERE 
+    PreviousMonthRevenue IS NOT NULL;
 
+SHOW COLUMNS FROM serv_date;
 
-
-#### Monthly Revenue Trend with Percentage Growth (MySQL Syntax)
 
 WITH MonthlyRevenue AS (
     SELECT 
         DATE_FORMAT(service_date, '%Y-%m') AS Month,
         SUM(total_revenue) AS Revenue
-    FROM serv_data
-    GROUP BY DATE_FORMAT(service_date, '%Y-%m')
+    FROM 
+        serv_data
+    GROUP BY 
+        DATE_FORMAT(service_date, '%Y-%m')
 ),
 RevenueComparison AS (
     SELECT 
         Month,
         Revenue,
         LAG(Revenue) OVER (ORDER BY Month) AS PreviousMonthRevenue
-    FROM MonthlyRevenue
+    FROM 
+        MonthlyRevenue
 )
 SELECT 
     Month,
     Revenue,
     PreviousMonthRevenue,
     CASE 
-        WHEN PreviousMonthRevenue > 0 
-        THEN ROUND(((Revenue - PreviousMonthRevenue) / PreviousMonthRevenue) * 100, 2) 
+        WHEN PreviousMonthRevenue > 0 THEN 
+            ROUND(((Revenue - PreviousMonthRevenue) / PreviousMonthRevenue) * 100, 2)
         ELSE NULL 
     END AS RevenuePercentageIncrease
-FROM RevenueComparison
-WHERE PreviousMonthRevenue IS NOT NULL;
+FROM 
+    RevenueComparison
+WHERE 
+    PreviousMonthRevenue IS NOT NULL;
+  SELECT
+  Region, 
+    service_date AS ServiceDate, 
+    SUM(total_revenue) AS TotalRevenue
+FROM serv_data s
+JOIN branch_data b ON branch_id = branch_id
+GROUP BY Region, service_date
 
-
-
-#### Revenue by Region and Service Date
+b.Region, 
+    s.service_date AS ServiceDate, 
+    SUM(s.total_revenue) AS TotalRevenue
+FROM services_data s
+JOIN branch_data b ON s.branch_id = b.branch_id
+GROUP BY b.Region, s.service_date;
 
 SELECT 
     b.Region, 
@@ -483,18 +495,12 @@ JOIN branch_data b ON s.branch_id = b.branch_id
 GROUP BY b.Region, s.service_date;
 
 
-#### Revenue by Department and Service Date
-
 SELECT 
     department, 
     SUM(total_revenue) AS TotalRevenue,
     service_date
 FROM serv_data
 GROUP BY department, service_date;
-
-
-
-#### Revenue by Client and Service Date (Top 5 Clients)
 
 SELECT 
     client_name, 
@@ -506,8 +512,7 @@ ORDER BY TotalRevenue DESC
 LIMIT 5;
 
 
-
-## Results
+##  Result
 
 The analysis delivered both strategic business insights and confirmed the predictive model’s reliability. Annual revenue reached ₦195.32M, closely matching predictions of ₦195.52M (<0.5% variance). Quarterly trends indicated Q3 as the main growth driver.
 
@@ -518,7 +523,7 @@ Client analysis recorded over 48,000 engagements, with retention stabilizing at 
 Regional results showed Europe as the benchmark region with 147% growth, APAC with high prediction-to-actual alignment, Americas declining by -12.1%, and EMEA underperforming at 48% of target. Operational analysis revealed that normal business operations generated 99.96% of revenue efficiently, whereas outliers consumed five times more hours with negligible returns. The predictive model remained robust under these conditions, maintaining 95–98% accuracy.
 
 
-## Recommendation
+##  Recommendation
 
 To address identified challenges, several strategic recommendations are proposed. First, Audit’s dominance should be balanced with growth in Advisory, Legal, and Management to reduce volatility. Second, Tax services require targeted client acquisition campaigns and cross-selling to unlock growth potential. Third, client retention strategies, including predictive identification of at-risk clients, loyalty programs, and relationship management, should be strengthened. Fourth, predictive modeling should be integrated into quarterly planning and scenario analysis. Fifth, operational outlier detection should be implemented to flag irregular transactions early, improving efficiency. Finally, high-potential regions should receive greater resources, while underperforming regions should be assessed for barriers to growth.
 
